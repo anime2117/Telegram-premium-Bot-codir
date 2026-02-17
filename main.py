@@ -83,13 +83,7 @@ def init_db():
             live_chat INTEGER NOT NULL DEFAULT 0
         )
         """)
-        
-        cur.execute("SELECT COUNT(*) FROM products")
-        if cur.fetchone()[0] == 0:
-            seed = [
-                ("Adobe Explore (1 Month)", 500, 300, 30, "Premium access."),
-                ("Premium VPN (1 Month)", 250, 999, 30, "High-speed VPN."),
-                ("ChatGPT Account", 450, 200, 30, "Personal account."),
+    
             ]
             cur.executemany("INSERT INTO products(name,price,stock,duration_days,desc) VALUES (?,?,?,?,?)", seed)
         con.commit()
